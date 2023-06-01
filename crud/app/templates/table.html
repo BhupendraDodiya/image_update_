@@ -1,0 +1,38 @@
+<table border="1px solid black">
+<thead>
+    <tr>
+        <td>No.</td>
+        <td>NAME</td>
+        <td>SUBJECT</td>
+        <td>FESS</td>
+        <td>DURATION</td>
+        <td>ADDRESS</td>
+        <td>MOBILE</td>
+        <td>IMAGE</td>
+        <td>DELETE</td>
+        <td>UPDATE</td>
+    </tr>
+</thead>
+<tbody>
+    {%if data %}
+    {% for i in data %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.subject}}</td>
+        <td>{{i.subject.fess}}</td>
+        <td>{{i.subject.duration}}</td>
+        <td>{{i.address}}</td>
+        <td>{{i.mobile}}</td>
+        <td><img src="{{i.image.url}}" width="100px" height="100px"/></td>
+        <td><a href="{% url 'del' i.id %}">DELETE</a></td>
+        <td><a href="/update/{{i.id}}">UPDATE</a></td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <tr>
+        <td colspan="5">No Data Found</td>
+    </tr>
+    {% endif %}
+</tbody>
+</table>

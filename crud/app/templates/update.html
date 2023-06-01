@@ -1,0 +1,15 @@
+<form method="post" action="/upd/" enctype="multipart/form-data">
+    {% csrf_token %}
+         <input type="hidden" value='{{uid}}' name="hide"/>
+         <input type="text" placeholder="name" name="name"/><br><br>
+         <select name="subject">
+          <option>Select Course</option>
+          {% for i in sub %}
+          <option value="{{i.id}}">{{i}}</option>
+          {% endfor %}
+     </select><br><br>
+         <input type="text" placeholder="address" name="address"/><br><br>
+         <input type="text" placeholder="mobile" name="mobile"/><br><br>
+         <input type="file" name="image"/><br><br>
+         <button>Submit</button>
+    </form>
